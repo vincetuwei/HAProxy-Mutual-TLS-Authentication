@@ -1,0 +1,21 @@
+version: "2"
+networks:
+  isolation-network:
+    driver: bridge
+services:
+  haproxy:
+    build: .
+    depends_on:
+      - webapp
+    links:
+      - webapp
+    ports:
+      - "8443:8443"
+    environment:
+      BACKENDS: "webapp"
+      DNS_ENABLED: "true"
+  webapp:
+    build: ./app/
+    command: python headers.py
+    ports:
+      - "8080:8080"
