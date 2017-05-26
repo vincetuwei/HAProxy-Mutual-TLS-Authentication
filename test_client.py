@@ -11,6 +11,9 @@ URL = "https://foo.com:8443"
 
 def main():
     test_with_cert()
+    print
+    print "-"*30
+    print
     test_without_cert()
 
 def test_with_cert():
