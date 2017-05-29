@@ -8,12 +8,9 @@ services:
     depends_on:
       - webapp
     links:
-      - webapp
+      - webapp:webapp
     ports:
       - "8443:8443"
-    environment:
-      BACKENDS: "webapp"
-      DNS_ENABLED: "true"
   webapp:
     build: ./app/
     command: python headers.py
